@@ -17,7 +17,7 @@ public class LibraryManagementSystem {
         return input;
     }
 
-    public static void main() {
+    public static void main(String[]args) {
         Library library = new Library();
         boolean running = true;
         String border = "-".repeat(40);
