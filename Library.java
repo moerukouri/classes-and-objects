@@ -22,7 +22,7 @@ public class Library {
 
     public void searchBook(String searchTitle) {
         for (Book book : books) {
-            if (book.getTitle().equals(searchTitle)) {
+            if (book.getTitle().equalsIgnoreCase(searchTitle)) {
                 System.out.println("Book found!");
                 book.displayBookDetails();
                 return;
