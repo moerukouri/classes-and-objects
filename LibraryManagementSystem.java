@@ -1,10 +1,7 @@
-import java.util.*;
-
 public class LibraryManagementSystem {
 
     public static void main(String[]args) {
-        Scanner sc = new Scanner(System.in);
-        InputValidator validator = new InputValidator(sc);
+        InputValidator validator = new InputValidator();
         Library library = new Library();
         boolean running = true;
         String border = "-".repeat(40);
@@ -21,15 +18,18 @@ public class LibraryManagementSystem {
             int choice = Integer.parseInt(validator.getValidatedInput("Enter your choice: ",
                     "^[1-4]$",
                     "Choice must be an integer from 1-4."));
+                    
             switch(choice){
                 case 1 :
-                    String title = getValidatedInput("Enter title: ",
+                    String title = validator.getValidatedInput("Enter title: ",
                             "^[A-Za-z0-9\\s\\-_,\\.;:()'!&?]+$",
                             "Titles can only contain letters, numbers, spaces, and standard punctuation (like hyphens, colons, or commas).");
+
                     String author = validator.getValidatedInput("Enter author: ",
                             "^[A-Za-z0-9]+\\.?([ '-]?[A-Za-z0-9]+\\.?)*$",
                             "Please enter a valid name.");
-                    int date = Integer.parseInt(getValidatedInput("Enter year: ",
+
+                    int date = Integer.parseInt(validator.getValidatedInput("Enter year: ",
                             "^(1[0-9]{3}|20[0-9]{2})$",
                             "Please enter a year from 1000-2099"));
 
