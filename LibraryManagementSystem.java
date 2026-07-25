@@ -1,23 +1,10 @@
 import java.util.*;
 
 public class LibraryManagementSystem {
-    static String getValidatedInput(String prompt, String regex, String errorMsg) {
-        Scanner sc = new Scanner(System.in);
-        boolean running = true;
-        String input = "";
-        while (running) {
-            System.out.print(prompt);
-            input = sc.nextLine().trim();
-            if (!input.matches(regex)) {
-                System.out.println(errorMsg);
-                continue;
-            }
-            running = false;
-        }
-        return input;
-    }
 
     public static void main(String[]args) {
+        Scanner sc = new Scanner(System.in);
+        InputValidator validator = new InputValidator(sc);
         Library library = new Library();
         boolean running = true;
         String border = "-".repeat(40);
@@ -31,7 +18,7 @@ public class LibraryManagementSystem {
             System.out.println("2. Display Book");
             System.out.println("3. Search Book");
             System.out.println("4. Exit");
-            int choice = Integer.parseInt(getValidatedInput("Enter your choice: ",
+            int choice = Integer.parseInt(validator.getValidatedInput("Enter your choice: ",
                     "^[1-4]$",
                     "Choice must be an integer from 1-4."));
             switch(choice){
@@ -39,7 +26,7 @@ public class LibraryManagementSystem {
                     String title = getValidatedInput("Enter title: ",
                             "^[A-Za-z0-9\\s\\-_,\\.;:()'!&?]+$",
                             "Titles can only contain letters, numbers, spaces, and standard punctuation (like hyphens, colons, or commas).");
-                    String author = getValidatedInput("Enter author: ",
+                    String author = validator.getValidatedInput("Enter author: ",
                             "^[A-Za-z0-9]+\\.?([ '-]?[A-Za-z0-9]+\\.?)*$",
                             "Please enter a valid name.");
                     int date = Integer.parseInt(getValidatedInput("Enter year: ",
@@ -52,7 +39,7 @@ public class LibraryManagementSystem {
                     library.displayBooks();
                     break;
                 case 3 :
-                    String searchTitle = getValidatedInput("Enter book title: ",
+                    String searchTitle = validator.getValidatedInput("Enter book title: ",
                             "^[A-Za-z0-9\\s\\-_,\\.;:()'!&?]+$",
                             "Titles can only contain letters, numbers, spaces, and standard punctuation (like hyphens, colons, or commas).");
                     library.searchBook(searchTitle);
