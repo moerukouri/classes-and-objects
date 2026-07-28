@@ -29,9 +29,8 @@ public class LibraryManagementSystem {
                             "^[A-Za-z0-9]+\\.?([ '-]?[A-Za-z0-9]+\\.?)*$",
                             "Please enter a valid name.");
 
-                    int date = Integer.parseInt(validator.getValidatedInput("Enter year: ",
-                            "^(1[0-9]{3}|20[0-9]{2})$",
-                            "Please enter a year from 1000-2099"));
+                    int date = validator.getValidatedYear("Enter year: ", 
+                            "Please enter a valid year. The year cannot be in the future.");
 
                     library.addBook(new LibraryBook(title, author, date));
                     break;

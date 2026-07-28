@@ -18,4 +18,17 @@ public class InputValidator {
         }
         return input;
     }
+
+    public int getValidatedYear(String prompt, String errorMsg){
+        System.out.print(prompt);
+        int year = sc.nextInt();
+        int currentYear = java.time.Year.now().getValue();
+
+        while(year > currentYear){
+            System.out.println(errorMsg);
+            System.out.print(prompt);
+            year = sc.nextInt();
+        }
+        return year;
+    }
 }
