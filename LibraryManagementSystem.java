@@ -21,15 +21,15 @@ public class LibraryManagementSystem {
                     
             switch(choice){
                 case 1 :
-                    String title = validator.getValidatedInput("Enter title: ",
+                    String title = validator.getValidatedInput("\nEnter title: ",
                             "^[A-Za-z0-9\\s\\-_,\\.;:()'!&?]+$",
                             "Titles can only contain letters, numbers, spaces, and standard punctuation (like hyphens, colons, or commas).");
 
-                    String author = validator.getValidatedInput("Enter author: ",
+                    String author = validator.getValidatedInput("\nEnter author: ",
                             "^[A-Za-z0-9]+\\.?([ '-]?[A-Za-z0-9]+\\.?)*$",
                             "Please enter a valid name.");
 
-                    int date = validator.getValidatedYear("Enter year: ", 
+                    int date = validator.getValidatedYear("\nEnter year: ", 
                             "Please enter a valid year. The year cannot be in the future.");
 
                     library.addBook(new LibraryBook(title, author, date));
@@ -38,7 +38,7 @@ public class LibraryManagementSystem {
                     library.displayBooks();
                     break;
                 case 3 :
-                    String searchTitle = validator.getValidatedInput("Enter book title: ",
+                    String searchTitle = validator.getValidatedInput("\nEnter book title: ",
                             "^[A-Za-z0-9\\s\\-_,\\.;:()'!&?]+$",
                             "Titles can only contain letters, numbers, spaces, and standard punctuation (like hyphens, colons, or commas).");
                     library.searchBook(searchTitle);
