@@ -10,8 +10,10 @@ public abstract class Book {
     }
 
     public String getTitle(){ return title; }
+    public String getAuthor(){ return author; }
+    public int getDate(){ return date; }
 
-    public abstract String getSummary();
+    public abstract String getSummary(int titleWidth, int authorWidth, int dateWidth);
 
     public abstract void displayBookDetails();
 }
