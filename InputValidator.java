@@ -20,14 +20,27 @@ public class InputValidator {
     }
 
     public int getValidatedYear(String prompt, String errorMsg){
-        System.out.print(prompt);
-        int year = sc.nextInt();
         int currentYear = java.time.Year.now().getValue();
+        System.out.print(prompt);
+        String input = sc.nextLine().trim();
+        int year = 0;
+        boolean valid = false;
 
-        while(year > currentYear){
-            System.out.println(errorMsg);
-            System.out.print(prompt);
-            year = sc.nextInt();
+        while(!valid){
+            try{
+                year = Integer.parseInt(input);
+                if(year > currentYear){
+                    System.out.println(errorMsg);
+                    System.out.print(prompt);
+                    input = sc.nextLine().trim();
+                } else {
+                    valid = true;
+                }
+            } catch(NumberFormatException e){
+                System.out.println(errorMsg);
+                System.out.print(prompt);
+                input = sc.nextLine().trim();
+            }
         }
         return year;
     }
