@@ -5,8 +5,9 @@ public class LibraryBook extends Book {
     }
 
     @Override
-    public String getSummary() {
-        return String.format("%-30s | %-22s | %-10d", title, author, date);
+    public String getSummary(int titleWidth, int authorWidth, int dateWidth) {
+        String format = "%-" + titleWidth + "s | %-" + authorWidth + "s | %-" + dateWidth + "d%n";
+        return String.format(format, title, author, date);
     }
 
     @Override

@@ -14,9 +14,21 @@ public class Library {
 
     public void displayBooks() {
         System.out.println("Book List: ");
-        System.out.printf("%-30s | %-22s | %-10s%n", "Title", "Author", "Year");
+        int titleWidth = "Title".length();
+        int authorWidth = "Author".length();
+        int dateWidth = "Year".length();
+
         for (Book book : books) {
-            System.out.println(book.getSummary());
+            titleWidth = Math.max(titleWidth, book.getTitle().length());
+            authorWidth = Math.max(authorWidth, book.getAuthor().length());
+            dateWidth = Math.max(dateWidth, String.valueOf(book.getDate()).length());
+        }
+
+        String headerFormat = "%-" + titleWidth + "s | %-" + authorWidth + "s | %-" + dateWidth + "s%n";
+        System.out.printf(headerFormat, "Title", "Author", "Year");
+
+        for (Book book : books) {
+            System.out.println(book.getSummary(titleWidth, authorWidth, dateWidth));
         }
     }
 
