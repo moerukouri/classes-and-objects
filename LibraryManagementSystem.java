@@ -22,6 +22,7 @@ public class LibraryManagementSystem {
                     
             switch(choice){
                 case 1 :
+                    System.out.println("\n============= Add Book =============");
                     String title = validator.getValidatedInput("\nEnter title: ",
                             "^[A-Za-z0-9\\s\\-_,\\.;:()'!&?]+$",
                             "Titles can only contain letters, numbers, spaces, and standard punctuation (like hyphens, colons, or commas).");
@@ -36,16 +37,18 @@ public class LibraryManagementSystem {
                     library.addBook(new LibraryBook(title, author, date));
                     break;
                 case 2 :
+                    System.out.println("\n============= Display Books =============");
                     library.displayBooks();
                     break;
                 case 3 :
+                    System.out.println("\n============= Search Book =============");
                     String searchTitle = validator.getValidatedInput("\nEnter book title: ",
                             "^[A-Za-z0-9\\s\\-_,\\.;:()'!&?]+$",
                             "Titles can only contain letters, numbers, spaces, and standard punctuation (like hyphens, colons, or commas).");
                     library.searchBook(searchTitle);
                     break;
                 case 4 :
-                    System.out.println("Closing Library Management System . . .");
+                    System.out.println("\nClosing Library Management System . . . ");
                     running = false;
                     break;
                 default :
