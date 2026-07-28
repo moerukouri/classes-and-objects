@@ -7,6 +7,7 @@ public class LibraryManagementSystem {
         String border = "-".repeat(40);
 
         while(running) {
+            System.out.println();
             System.out.println(border);
             System.out.println("Library Management System");
             System.out.println(border);
