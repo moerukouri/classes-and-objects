@@ -29,7 +29,7 @@ public class InputValidator {
         while(!valid){
             try{
                 year = Integer.parseInt(input);
-                if(year > currentYear){
+                if(year > currentYear || year < 0){
                     System.out.println(errorMsg);
                     System.out.print(prompt);
                     input = sc.nextLine().trim();
