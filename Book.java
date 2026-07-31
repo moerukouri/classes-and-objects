@@ -1,7 +1,7 @@
 public class Book {
-    protected String title;
-    protected String author;
-    protected int date;
+    private final String title;
+    private final String author;
+    private final int date;
 
     public Book(String title, String author, int date){
         this.title = title;
