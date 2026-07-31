@@ -24,7 +24,7 @@ public class LibraryManagementSystem {
             System.out.println(border);
             System.out.println("Menu");
             System.out.println("1. Add Book");
-            System.out.println("2. Display Book");
+            System.out.println("2. Display Books");
             System.out.println("3. Search Book");
             System.out.println("4. Exit");
             int choice = Integer.parseInt(validator.getValidatedInput("Enter your choice: ",
