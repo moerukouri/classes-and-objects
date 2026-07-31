@@ -19,8 +19,30 @@ public class Library {
         return true;
     }
 
-    public void displayBooks() {
+    public void displayAll() {
         System.out.println("Book List: ");
+        printBooks(books);
+        }
+
+    public void searchBook(String searchTitle) {
+        List<Book> matches = new ArrayList<>();
+
+        for (Book book : books) {
+            if (book.getTitle().equalsIgnoreCase(searchTitle)) {
+                matches.add(book);
+            }
+        }
+
+        if (matches.isEmpty()) {
+            System.out.println("Book not found!");
+            return;
+        }
+
+        System.out.println("Book found!");
+        printBooks(matches);
+    }
+
+    public void printBooks(List<Book> books) {
         int titleWidth = "Title".length();
         int authorWidth = "Author".length();
         int dateWidth = "Year".length();
@@ -37,16 +59,5 @@ public class Library {
         for (Book book : books) {
             System.out.println(book.getSummary(titleWidth, authorWidth, dateWidth));
         }
-    }
-
-    public void searchBook(String searchTitle) {
-        for (Book book : books) {
-            if (book.getTitle().equalsIgnoreCase(searchTitle)) {
-                System.out.println("Book found!");
-                book.displayBookDetails();
-                return;
-            }
-        }
-        System.out.println("Book not found!");
     }
 }

@@ -41,7 +41,7 @@ public class LibraryManagementSystem {
                     break;
                 case 2 :
                     System.out.println("\n============= Display Books =============");
-                    library.displayBooks();
+                    library.displayAll();
                     break;
                 case 3 :
                     System.out.println("\n============= Search Book =============");
