@@ -1,4 +1,4 @@
-public abstract class Book {
+public class Book {
     protected String title;
     protected String author;
     protected int date;
@@ -13,7 +13,14 @@ public abstract class Book {
     public String getAuthor(){ return author; }
     public int getDate(){ return date; }
 
-    public abstract String getSummary(int titleWidth, int authorWidth, int dateWidth);
+    public String getSummary(int titleWidth, int authorWidth, int dateWidth){
+        String format = "%-" + titleWidth + "s | %-" + authorWidth + "s | %-" + dateWidth + "d";
+        return String.format(format, title, author, date);
+    }
 
-    public abstract void displayBookDetails();
+    public void displayBookDetails(){
+        System.out.println("Title: " + title);
+        System.out.println("Author: " + author);
+        System.out.println("Year: " + date);
+    }
 }

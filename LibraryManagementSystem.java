@@ -34,7 +34,7 @@ public class LibraryManagementSystem {
                     int date = validator.getValidatedYear("\nEnter year: ", 
                             "Please enter a valid year. The year cannot be in the future.");
 
-                    library.addBook(new LibraryBook(title, author, date));
+                    library.addBook(new Book(title, author, date));
                     break;
                 case 2 :
                     System.out.println("\n============= Display Books =============");
