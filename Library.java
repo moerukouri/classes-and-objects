@@ -7,9 +7,16 @@ public class Library {
         books = new ArrayList<>();
     }
 
-    public void addBook(Book book){
+    public boolean addBook(Book book){
+        for(Book exisitng : books){
+            if(exisitng.getTitle().equalsIgnoreCase(book.getTitle()) && exisitng.getAuthor().equalsIgnoreCase(book.getAuthor())){
+                System.out.println("Book already exists!");
+                return false;
+            }
+        }
         books.add(book);
         System.out.println("Book added Successfully!");
+        return true;
     }
 
     public void displayBooks() {

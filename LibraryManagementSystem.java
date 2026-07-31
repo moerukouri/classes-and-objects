@@ -1,5 +1,16 @@
 public class LibraryManagementSystem {
+    private static boolean promptAndAddBook(InputValidator validator, Library library) {
+        String title = validator.getValidatedInput("\nEnter title: ",
+                "^[A-Za-z0-9\\s\\-_,\\.;:()'!&?]+$",
+                "Titles can only contain letters, numbers, spaces, and standard punctuation (like hyphens, colons, or commas).");
+        String author = validator.getValidatedInput("\nEnter author: ",
+                "^[A-Za-z0-9]+\\.?([ '-]?[A-Za-z0-9]+\\.?)*$",
+                "Please enter a valid name.");
+        int date = validator.getValidatedYear("\nEnter year: ",
+                "Please enter a valid year. The year cannot be in the future.");
 
+        return library.addBook(new Book(title, author, date));
+    }
     public static void main(String[]args) {
         InputValidator validator = new InputValidator();
         Library library = new Library();
@@ -23,18 +34,10 @@ public class LibraryManagementSystem {
             switch(choice){
                 case 1 :
                     System.out.println("\n============= Add Book =============");
-                    String title = validator.getValidatedInput("\nEnter title: ",
-                            "^[A-Za-z0-9\\s\\-_,\\.;:()'!&?]+$",
-                            "Titles can only contain letters, numbers, spaces, and standard punctuation (like hyphens, colons, or commas).");
-
-                    String author = validator.getValidatedInput("\nEnter author: ",
-                            "^[A-Za-z0-9]+\\.?([ '-]?[A-Za-z0-9]+\\.?)*$",
-                            "Please enter a valid name.");
-
-                    int date = validator.getValidatedYear("\nEnter year: ", 
-                            "Please enter a valid year. The year cannot be in the future.");
-
-                    library.addBook(new Book(title, author, date));
+                    boolean added = promptAndAddBook(validator, library);
+                    while (!added) {
+                        added = promptAndAddBook(validator, library);
+                    }
                     break;
                 case 2 :
                     System.out.println("\n============= Display Books =============");
